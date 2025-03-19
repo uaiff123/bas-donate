@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรดบริจาก Turemoney-wallet</title>
+    <link rel="website icon" type="jpg" href="https://i.pinimg.com/736x/4a/90/bb/4a90bb08fddfaa3d117543d584882a52.jpg">
+</head>
+<style>
+    html,
+    body {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100%;
+    }
+
+    /* ตั้งค่าหน้าโหลดให้เต็มจอ */
+    #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(135, 136, 141, 0.342);
+        /* ใช้ rgba() เพื่อให้โปร่งแสงจริง */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        z-index: 9999;
+    }
+
+    /* ทำให้แสดงไอคอนโหลด */
+    .loader {
+        border: 6px solid white;
+        /* กำหนดขอบสีขาว */
+        border-top: 6px solid rgb(242, 0, 255);
+        /* เปลี่ยนสีของขอบด้านบน */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 10px;
+    }
+
+    /* แอนิเมชันหมุน */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* ซ่อนเนื้อหาเว็บตอนโหลด */
+    #content {
+        display: none;
+    }
+
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background: linear-gradient(to right, #d7a583, #e8e1cb);
+        inset: 0;
+        justify-items: center;
+        text-align: center;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-100%);
+            /* เริ่มที่ขวาสุดของหน้าจอ */
+            opacity: 0;
+            /* เริ่มที่ความโปร่งใส 0% */
+        }
+
+        100% {
+            transform: translateX(0%);
+            /* ข้อความจะเลื่อนไปที่ตำแหน่งwwdปกติ */
+            opacity: 1;
+        }
+    }
+
+    nav h1 {
+        animation: 0s 0s;
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    .my-color h1 {
+        background: linear-gradient(to right, #ff5900, #fd0505);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        font-size: 50px;
+
+    }
+
+    @keyframes softShadow {
+        0% {
+            transform: translateY(0);
+            box-shadow: 0px 10px 50px rgba(242, 3, 182, 0.3);
+        }
+
+        50% {
+            transform: translateY(-10px);
+            box-shadow: 0px 20px 70px rgba(7, 248, 15, 0.664);
+        }
+
+        100% {
+            transform: translateY(0);
+            box-shadow: 0px 10px 60px rgba(134, 4, 255, 0.9);
+        }
+    }
+
+    @keyframes softShadow1 {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+
+        100% {
+            transform: translateY(0);
+
+        }
+    }
+
+    .image-container img {
+        border-radius: 15px;
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
+        animation: softShadow 1.5s infinite alternate ease-in-out;
+    }
+
+    .image-container {
+        margin-top: 50px;
+    }
+
+    .monny-my img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .bth {
+        font-weight: 900;
+        color: rgba(255, 128, 1, 0.658);
+        padding: 20px;
+        font-size: 30px;
+        background-color: rgba(162, 139, 139, 0.4);
+        border: #d9d3d0;
+        margin: 5px;
+        border-radius: 30px;
+        animation: softShadow1 2.5s infinite alternate ease-in-out;
+    }
+
+    .bth:hover {
+        transform: scale(1.4);
+    }
+
+    .color-bth {
+        display: flex;
+        justify-content: center;
+        grid-template-columns: repeat(10 1fr);
+        margin-top: 50px;
+    }
+
+    .bth-layout {
+        margin-top: 40px;
+        background: rgba(0, 0, 0, 0.072);
+        border-radius: 50px;
+    }
+
+    .color-text {
+        background: rgba(0, 0, 0, 0.284);
+        height: 45px;
+        font-size: 25px;
+        text-align: center;
+        font-weight: 900;
+        border-radius: 15px;
+        box-shadow: 0px 10px 99px rgba(0, 0, 0, 0.990);
+    }
+
+    .color-text {
+        animation: softShadow1 2.5s infinite alternate ease-in-out;
+        color: rgb(243, 246, 249);
+    }
+
+    .bth-exis {
+        text-align: left;
+        position: absolute;
+        display: block;
+    }
+
+    .bth-exis button {
+        background: linear-gradient(to right, #ff0101, #ffc400);
+        border: #ff5900;
+        border-radius: 10px;
+
+    }
+
+    .bth-exis h1 {
+        color: rgb(208, 255, 0);
+        font-size: 20px;
+
+    }
+
+    .bth-exis:hover {
+        transform: scale(1.3);
+    }
+
+    @media screen and (min-width: 650px) {
+        .bth-exis {
+            margin-top: 20px;
+        }
+
+        .bth-exis h1 {
+            font-size: 40px;
+        }
+
+        .bth-exis button {
+            border-radius: 30px;
+        }
+    }
+</style>
+
+<body>
+    <!-- หน้าโหลด -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>รอดิอย่ารีบ...</p>
+    </div>
+    <!-- เนื้อหาเว็บไซต์ -->
+    <div id="content">
+        <h1>ยินดีต้อนรับ!</h1>
+        <p>เว็บไซต์โหลดเสร็จแล้ว 🎉</p>
+    </div>
+
+    <div class="bth-exis">
+        <a href="home2.html" target="_self">
+            <button>
+                <h1>ออก</h1>
+            </button></a>
+    </div>
+    <div class="monny-my">
+        <div class="image-container">
+            <!--link-->
+            <img src="https://play-lh.googleusercontent.com/6I2IYbIg4rhGUgs0UxP_5q6wmJmlBjBrlQ9f0_FAN94yOzwmrtEteifCdPPd1-chY_NX"
+                alt="wallet">
+        </div>
+    </div>
+    <nav class="my-color">
+        <h1>Ture Money</h1>
+    </nav>
+
+    <section>
+        <div class="color-bth">
+            <div class="bth-layout">
+                <div class="color-text">
+                    <p>เลือกตัวเลขที่ต้องการ</p>
+                </div>
+
+                <a href="https://tmn.app.link/XXWkX8K0JRb">
+                    <button class="bth"> 01 </button></a>
+                <a href="https://tmn.app.link/3ifnneQ0JRb">
+                    <button class="bth"> 02 </button></a>
+                <a href="https://tmn.app.link/05CsPnR0JRb">
+                    <button class="bth"> 03 </button></a>
+
+                <div class="bth-1"></div>
+
+                <a href="https://tmn.app.link/hoVukgkPDRb">
+                    <button class="bth"> 10 </button></a>
+                <a href="https://tmn.app.link/kecnJmZ0JRb">
+                    <button class="bth"> 30 </button></a>
+                <a href="https://tmn.app.link/u969fc00JRb">
+                    <button class="bth"> 50 </button></a>
+
+                <div></div>
+
+                <a href="https://tmn.app.link/K3SGR600JRb">
+                    <button class="bth"> 70 </button></a>
+                <a href="https://tmn.app.link/ydBcvKB1JRb">
+                    <button class="bth"> 79 </button></a>
+                <a href="https://tmn.app.link/cjW6bKC1JRb">
+                    <button class="bth"> 90 </button></a>
+
+                <div></div>
+
+                <a href="https://tmn.app.link/Djp2sID1JRb">
+                    <button class="bth"> 99 </button></a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--auto-song-->
+    <audio id="bgMusic" autoplay loop>
+        <source src="MONTAGEM LUNAR DIAMANTE SLOWED [ ezmp3.cc ].mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

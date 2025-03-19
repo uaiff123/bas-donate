@@ -1,0 +1,449 @@
+
+body {
+  overflow-x: hidden;
+  height: 100%;
+
+}
+
+/* ตั้งค่าหน้าโหลดให้เต็มจอ */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(135, 136, 141, 0.342); /* ใช้ rgba() เพื่อให้โปร่งแสงจริง */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  z-index: 9999;
+}
+
+/* ทำให้แสดงไอคอนโหลด */
+.loader {
+  border: 6px solid white; /* กำหนดขอบสีขาว */
+  border-top: 6px solid rgb(242, 0, 255); /* เปลี่ยนสีของขอบด้านบน */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+/* แอนิเมชันหมุน */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ซ่อนเนื้อหาเว็บตอนโหลด */
+#content {
+  display: none;
+}
+
+.auto-song1 img {
+  width: 50px;
+  height: 50px;
+}
+
+.auto-song1 {
+  position: absolute;
+  display: block;
+  animation: softShadow1 2.5s infinite alternate ease-in-out;
+  animation-delay: 0s, 0s;
+}
+
+.img-zoom:hover,
+.img-zoom2:hover {
+  transform: scale(1.1);
+}
+
+.image-container,
+.monny-my {
+  display: inline-block;
+}
+
+.image-container div {
+  display: inline-block;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-10%);
+    /* เริ่มที่ขวาสุดของหน้าจอ */
+    opacity: 0;
+    /* เริ่มที่ความโปร่งใส 0% */
+  }
+
+  50% {
+    opacity: 0.7;
+    /* ความโปร่งใส 70% */
+  }
+
+  100% {
+    transform: translateX(-1%);
+    /* ข้อความจะเลื่อนไปที่ตำแหน่งปกติ */
+    opacity: 1;
+    /* ความโปร่งใสเต็มที่ */
+
+  }
+}
+
+.image-container img {
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.10);
+  animation: softShadow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes softShadow {
+  0% {
+
+    transform: translateY(0);
+    box-shadow: 0px 10px 50px rgba(255, 98, 0, 0.3);
+  }
+
+  50% {
+    transform: translateY(-20px);
+    box-shadow: 0px 20px 70px rgba(225, 33, 33, 0.4);
+  }
+
+  100% {
+    transform: translateY(0);
+    box-shadow: 0px 10px 60px rgba(195, 108, 108, 0.9);
+  }
+}
+
+body {
+  background: linear-gradient(to right, #383640, #150446);
+  min-height: 100vh;
+
+}
+.background-smooth {
+  animation: scaleupDown 4s infinite ease-in-out;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgba(163, 139, 229, 0.973);
+  height: 100px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.background-smooth h3 {
+  font-size: 40px;
+}
+
+main {
+  background: url(https://static.vecteezy.com/system/resources/previews/011/424/070/non_2x/abstract-smooth-blur-background-backdrop-for-your-design-wallpaper-template-with-color-transition-gradient-vector.jpg);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+
+.my-profire h1 {
+  background: url(https://static.vecteezy.com/system/resources/previews/011/424/070/non_2x/abstract-smooth-blur-background-backdrop-for-your-design-wallpaper-template-with-color-transition-gradient-vector.jpg);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+
+main h3 {
+  text-align: center;
+  color: burlywood;
+}
+
+@keyframes mySong {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.my-profire {
+  margin-top: 100px;
+  animation: mySong 8.5s forwards;
+
+}
+
+.my-profire img {
+  width: 50px;
+  height: 50px;
+}
+
+main h1 {
+  font-size: 20px;
+  animation: mySong 6s forwards;
+}
+
+@keyframes mySong2 {
+  0% {
+    opacity: 0;
+    font-size: 10px;
+  }
+
+  90% {
+    margin-top: -120px;
+    font-size: 32px;
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: -120px;
+    font-size: 32px;
+    opacity: 0;
+  }
+}
+
+main h2 {
+  font-size: 30px;
+  animation: mySong 0s forwards, mySong2 5s forwards;
+  animation-delay: 0s, 3s;
+  background: url(https://www.pixelstalk.net/wp-content/uploads/images1/Blur-Blue-Backgrounds.jpg);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+}
+
+main h3 {
+  font-size: 50px;
+  animation: mySong2 0s forwards, mySong3 2.6s forwards;
+  animation-delay: 0s, 8s;
+}
+
+@keyframes mySong3 {
+  0% {
+    opacity: 0;
+    font-size: 30px;
+    margin-top: -20px;
+  }
+
+  90% {
+    margin-top: -80px;
+    font-size: 100px;
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: -80px;
+    font-size: 100px;
+    opacity: 0;
+  }
+}
+
+.monny-my {
+  animation: mySong3 0s forwards, mySong4 5s forwards;
+  animation-delay: 0s, 11s;
+}
+
+.cilck-me h1 {
+  background: url(https://png.pngtree.com/background/20210709/original/pngtree-shading-background-abstract-colorful-background-colorful-art-picture-image_938007.jpg);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  animation: mySong3 0s forwards, mySong5 2s forwards, softShadow1 2.5s infinite alternate ease-in-out;
+  animation-delay: 0s, 11s;
+  position: relative;
+}
+
+.monny-my img {
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes mySong5 {
+  50% {
+    font-size: 5px;
+    left: 0px;
+    opacity: 0;
+    margin-top: -300px;
+  }
+
+  100% {
+    font-size: 30px;
+    margin-top: -230px;
+    opacity: 1;
+  }
+}
+
+@keyframes softShadow1 {
+  0% {
+
+    transform: translateY(0);
+    box-shadow: 0px 10px 50px rgba(0, 29, 248, 0.3);
+  }
+
+  50% {
+    transform: translateY(-20px);
+    box-shadow: 0px 20px 70px rgba(0, 255, 255, 0.4);
+  }
+
+  100% {
+    transform: translateY(0);
+    box-shadow: 0px 10px 60px rgba(4, 138, 255, 0.9);
+  }
+}
+
+@keyframes mySong4 {
+  0% {
+    opacity: 0;
+    margin-top: -130px;
+  }
+
+  100% {
+    margin-top: -130px;
+    opacity: 1;
+
+  }
+}
+
+footer {
+  margin-top: 600px;
+  padding: 15px;
+  color: rgb(1, 30, 84);
+  background: linear-gradient(to right, #6e6b78, #3d56a8);
+  text-align: center;
+  display: grid;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  justify-items: center;
+}
+
+footer ul {
+  font-size: 20px;
+}
+
+footer img {
+  width: 40px;
+  height: 35px;
+  display: inline-block;
+  padding: 5px;
+  box-shadow: 10px 10px 15px rgba(51, 0, 255, 0.6);
+
+}
+
+footer p {
+  margin-top: -20px;
+}
+
+/* ตั้งค่าสำหรับฉากเปิดตัว */
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  /* สีพื้นหลังเข้ม เท่ๆ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  /* ให้อยู่ด้านบนสุด */
+  animation: fadeOut 0.5s ease-in-out forwards;
+  animation-delay: 1.3s;
+  /* แสดง 2 วินาที แล้วจางออก */
+}
+
+#splash h1 {
+
+  color: #0095ff;
+  font-size: 3em;
+  font-family: 'Arial', sans-serif;
+}
+
+/* เนื้อหาหลักซ่อนอยู่เบื้องหลังฉากเปิดตัว */
+#main {
+  opacity: 0;
+  animation: showContent 0.1s forwards;
+  animation-delay: 1s;
+  /* ให้เนื้อหาหลักแสดงหลังจากฉากเปิดตัวจางหาย */
+}
+
+/* Keyframes สำหรับฉากเปิดตัวจางหาย */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Keyframes สำหรับแสดงเนื้อหาหลัก */
+@keyframes showContent {
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 543px) {
+  .background-smooth {
+    font-size: 40px;
+  }
+
+  @keyframes mySong2 {
+    0% {
+      opacity: 0;
+      font-size: 15px;
+    }
+
+    90% {
+      margin-top: -120px;
+      font-size: 40px;
+      opacity: 1;
+    }
+
+    100% {
+      margin-top: -120px;
+      font-size: 40px;
+      opacity: 0;
+    }
+  }
+
+  @keyframes mySong {
+    0% {
+      opacity: 1;
+
+    }
+
+    100% {
+      opacity: 0;
+      font-size: 25px;
+    }
+  }
+
+  .my-profire img {
+    height: 80px;
+    width: 80px;
+  }
+
+  @keyframes mySong5 {
+    50% {
+      font-size: 0px;
+      left: -50px;
+      opacity: 0;
+      margin-top: -300px;
+    }
+
+
+    100% {
+      font-size: 40px;
+      margin-top: -230px;
+      opacity: 1;
+    }
+  }
+
+}
+
+@media screen and (min-width: 650px) {
+  .auto-song1{
+    margin-left: 40vh;
+    margin-top: 120px;
+  }
+  .auto-song img{
+    width: 70px;
+    height: 70px;
+  }
+}
